@@ -12,7 +12,7 @@ ANONYMOUS_CLIENT = lazy_fixture('client')
 
 @pytest.mark.parametrize(
     'name, client_type, method, expected_status',
-    [
+    (
         ('home', ANONYMOUS_CLIENT, 'get', HTTPStatus.OK),
         ('detail', ANONYMOUS_CLIENT, 'get', HTTPStatus.OK),
         ('login', ANONYMOUS_CLIENT, 'get', HTTPStatus.OK),
@@ -22,7 +22,7 @@ ANONYMOUS_CLIENT = lazy_fixture('client')
         ('delete', AUTHOR_CLIENT, 'get', HTTPStatus.OK),
         ('edit', AUTH_USER_CLIENT, 'get', HTTPStatus.NOT_FOUND),
         ('delete', AUTH_USER_CLIENT, 'get', HTTPStatus.NOT_FOUND),
-    ]
+    )
 )
 def test_pages_availability(
     name, client_type, method, expected_status, url_paths
